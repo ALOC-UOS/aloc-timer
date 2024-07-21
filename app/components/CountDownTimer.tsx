@@ -129,7 +129,7 @@ const CountdownTimer = () => {
             color: colorIntensity > 0 ? `rgb(${Math.round(0 * (1 - colorIntensity))}, ${Math.round(0 * (1 - colorIntensity))}, ${Math.round(255 * (1 - colorIntensity))})` : undefined
           }}
         >
-          Countdown Timer
+          Timer
         </h1>
         <div 
           className="text-8xl font-bold mb-10 text-center transition-colors duration-300 text-black"
