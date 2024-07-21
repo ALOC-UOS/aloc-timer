@@ -1,0 +1,24 @@
+name: Cross-Repo Push
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  push-to-other-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Push to target repo
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git remote add target_repo https://${API_TOKEN_GITHUB}@github.com/baebae02/aloc-timer.git
+          git push target_repo deploy:main --force
